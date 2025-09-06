@@ -9,7 +9,7 @@ export default function Cart({ cart, refreshCart, onRemove, open, onClose }) {
   };
   const handleUpdateQty = async (itemId, qty) => {
     if (qty < 1) return;
-    await fetch('http://localhost:5000/api/cart/update', {
+  await fetch(`${import.meta.env.VITE_API_URL}/api/cart/update`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` },
       body: JSON.stringify({ itemId, quantity: qty })

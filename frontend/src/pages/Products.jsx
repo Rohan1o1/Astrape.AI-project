@@ -20,7 +20,7 @@ export default function Products({ onAddToCart, filter }) {
   const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
-    let url = 'http://localhost:5000/api/items?';
+  let url = `${import.meta.env.VITE_API_URL}/api/items?`;
     if (categories[tab] && categories[tab] !== 'All') url += `category=${categories[tab]}&`;
     if (filter && filter.price) url += `minPrice=${filter.price[0]}&maxPrice=${filter.price[1]}&`;
     if (filter && filter.rating) url += `rating=${filter.rating}&`;

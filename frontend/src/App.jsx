@@ -66,7 +66,7 @@ function App() {
   // Fetch cart from backend
   const refreshCart = async () => {
     if (!token) return;
-    const res = await fetch('http://localhost:5000/api/cart', {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/cart`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     const data = await res.json();
@@ -79,7 +79,7 @@ function App() {
       setPage('login');
       return;
     }
-    await fetch('http://localhost:5000/api/cart/add', {
+  await fetch(`${import.meta.env.VITE_API_URL}/api/cart/add`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ function App() {
   // Remove from cart and update cartCount, but let Cart page handle UI update
   const handleRemoveFromCart = async (itemId, onCartUpdate) => {
     if (!token) return;
-    await fetch('http://localhost:5000/api/cart/remove', {
+  await fetch(`${import.meta.env.VITE_API_URL}/api/cart/remove`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
